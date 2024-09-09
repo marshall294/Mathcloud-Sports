@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Information Submission</title>
+    <style>
+        /* Basic CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #007BFF;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .additional-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e9f7ff;
+            border-left: 5px solid #007BFF;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1em;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            input, textarea, select, button {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            input, textarea, select, button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Submit Your Information</h1>
+        <p>Submit your details, including pictures and videos, to be reviewed by MathCloud-Sport.</p>
+        
+        <!-- Player Submission Form -->
+        <form action="mailto:admin@mathcloud-tech.online?subject=Player Submission" method="post" enctype="text/plain" onsubmit="composeSubmissionEmail();">
+            <!-- Player Name -->
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <!-- Position -->
+            <label for="position">Position:</label>
+            <select id="position" name="position" required>
+                <option value="" disabled selected>Select your position</option>
+                <option value="Goalkeeper">Goalkeeper</option>
+                <option value="Defender">Defender</option>
+                <option value="Midfielder">Midfielder</option>
+                <option value="Forward">Forward</option>
+                <option value="Winger">Winger</option>
+            </select>
+
+            <!-- Club -->
+            <label for="club">Current Club:</label>
+            <input type="text" id="club" name="club" placeholder="Enter your current club" required>
+
+            <!-- Country -->
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" placeholder="Enter your country" required>
+
+            <!-- Date of Birth -->
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <!-- Weight -->
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" placeholder="Enter your weight" required>
+
+            <!-- Height -->
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" placeholder="Enter your height" required>
+
+            <!-- Foot -->
+            <label for="foot">Preferred Foot:</label>
+            <select id="foot" name="foot" required>
+                <option value="" disabled selected>Select your preferred foot</option>
+                <option value="Left">Left</option>
+                <option value="Right">Right</option>
+                <option value="Both">Both</option>
+            </select>
+
+            <!-- Pictures -->
+            <label for="pictures">Upload Pictures:</label>
+            <input type="file" id="pictures" name="pictures" accept="image/*" multiple required>
+
+            <!-- Videos -->
+            <label for="videos">Upload Videos:</label>
+            <input type="file" id="videos" name="videos" accept="video/*" multiple required>
+
+            <!-- Additional Information -->
+            <label for="additional-info">Additional Information:</label>
+            <textarea id="additional-info" name="additional-info" placeholder="Include any additional information (e.g., achievements, statistics, etc.)" required></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Information</button>
+        </form>
+
+        <!-- Additional Information Section -->
+        <div class="additional-info">
+            <p><strong>Important Information:</strong></p>
+            <p>After submitting your information and completing the registration fee payment, MathCloud-Sport Hub agents will evaluate your performance over 10 consecutive appearances. These evaluations will form the basis of your detailed statistical profile, focusing on the most marketable and exceptional skills. The observable criteria will adhere to FIFA standards, and your profile picture will only appear on our platform if your skills meet our standards. Please note that the registration fee varies based on the distance of the player's training facilities, and there are no refunds after payment. Players are strongly advised to review this information thoroughly. For further inquiries, please contact MathCloud-Sport Hub at <a href="mailto:info@mathcloud-tech.online">info@mathcloud-tech.online</a>.</p>
+
+        </div>
+
+        <footer>
+            <p>© 2024 MathCloud-Sport Hub. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function composeSubmissionEmail() {
+            const name = document.getElementById('name').value;
+            const position = document.getElementById('position').value;
+            const club = document.getElementById('club').value;
+            const country = document.getElementById('country').value;
+            const dob = document.getElementById('dob').value;
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+            const foot = document.getElementById('foot').value;
+            const additionalInfo = document.getElementById('additional-info').value;
+
+            const emailBody = `
+                Dear MathCloud-Sport Admin,
+
+                A new player has submitted their information. Below are the details:
+
+                Full Name: ${name}
+                Position: ${position}
+                Current Club: ${club}
+                Country: ${country}
+                Date of Birth: ${dob}
+                Weight: ${weight} kg
+                Height: ${height} cm
+                Preferred Foot: ${foot}
+
+                Additional Information:
+                ${additionalInfo}
+
+                The player has also attached pictures and videos for review.
+
+                Best Regards,
+                MathCloud-Sport System
+            `;
+
+            document.querySelector('form').action = `mailto:admin@mathcloud-tech.online?subject=Player Submission - ${name}&body=${encodeURIComponent(emailBody)}`;
+        }
+    </script>
+
+</body>
+</html>

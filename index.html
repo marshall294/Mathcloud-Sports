@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MathCloud-Sport - Footballer Hub with profiles of top footballers, showcasing their age, position, and clubs visible to top football organizations.">
+    <meta name="keywords" content="Football, Player Profiles, MathCloud-Sport, Scouting, Clubs">
+    <meta name="author" content="MathCloud-Sport">
+    <title>MathCloud - Footballer Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+            padding: 10px 0;
+        }
+        .nav a {
+            color: white;
+            padding: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 5px;
+            border: 5px solid #ccc;
+        }
+        .player-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .player-thumbnail {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .player-thumbnail img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #007bff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .player-thumbnail h3 {
+            margin: 10px 0 5px;
+        }
+        .player-thumbnail p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .player-thumbnail:hover img {
+            transform: scale(1.1);
+            border-color: #0056b3;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+        .footer .clubs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .footer .clubs img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        .footer .clubs img:hover {
+            transform: scale(1.1);
+        }
+        .welcome-message {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 30px;
+            color: blue;
+        }
+        article {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        article img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        article div {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        article h2, article h3 {
+            color: #333;
+        }
+
+        article p, article ul {
+            color: #555;
+            text-align: left;
+        }
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+        main {
+            flex: 1;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+        .text {
+            /* Your existing styles */
+            opacity: 0; /* Initially hide the text */
+            animation: fadeInAndFlyIn 3s forwards; /* Apply animation to fade in and fly in text */
+        }
+
+        @keyframes fadeInAndFlyIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px); /* Start offscreen */
+            }
+            50% {
+                opacity: 1; /* Fade in */
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0); /* Fly in */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>MathCloud - Footballer Hub</h1>
+    </div>
+    <div class="nav">
+        <a href="submit-info.html">Register as a player</a>
+        <a href="terms.html">Terms & Conditions</a>
+    </div>
+    <div class="welcome-message">
+        <p>If you are looking for young footballers and new talent in Nigeria, take time to explore this page. Each player has their own portfolio, and you can reach the player through MathCloud - Footballer Hub.</p>
+    </div>
+
+        <div class="slider">
+            <div class="slide fade">
+                <img src="picture1.jfif" alt="Slide 1">
+                <div class="text">Discover Nigeria's Rising Stars - Your Next Football Sensation Awaits on MathCloud-Sport!</div>
+            </div>
+            <div class="slide fade">
+                <img src="picture2.jpg" alt="Slide 2">
+                <div class="text">Scouting Talent? Explore Nigeria’s Future Football Icons with MathCloud-Sport Hub!</div>
+            </div>
+            <div class="slide fade">
+                <img src="picture3.png" alt="Slide 3">
+                <div class="text">Unleash the Potential - Find Exceptional Nigerian Football Talent Here!</div>
+            </div>
+            <div class="slide fade">
+                <img src="picture4.jpg" alt="Slide 3">
+                <div class="text">From Grassroots to Greatness - Scout Nigeria's Top Football Prospects Today!</div>
+            </div>
+            <div class="slide fade">
+                <img src="picture5.jpeg" alt="Slide 3">
+                <div class="text">Looking for the Next Big Thing in Football? Nigeria's Talent Awaits on MathCloud-Sport!</div>
+            </div>
+            <div class="slide fade">
+                <img src="picture6.jpg" alt="Slide 3">
+                <div class="text">Spot Nigeria’s Future Champions - Your Scouting Journey Starts with MathCloud-Sport!</div>
+            </div>
+        </div>
+    <div class="welcome-message">
+        <p>If you are looking a specific footballer's name, position, and age - kindly use the search bar below.</p>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchInput" onkeyup="searchPlayers()" placeholder="Search by name, age, or position...">
+    </div>
+
+    <div class="player-thumbnails" id="playerGrid">
+        <!-- Player Circular Frame -->
+        <div class="player-thumbnail" data-name="Bilal Yahayah" data-age="16" data-position="Midfielder">
+            <a href="bilal.html">
+                <img src="bilal.jpeg" alt="Bilal Yahayah">
+                <h3>Bilal Yahayah</h3>
+                <p>Age: 16</p>
+                <p>Position: Midfielder</p>
+            </a>
+        </div>
+        <div class="player-thumbnail" data-name="Godwin Lucky" data-age="20" data-position="Forward">
+            <a href="goddy.html">
+                <img src="goddy.jpeg" alt="Godwin Lucky">
+                <h3>Godwin Lucky</h3>
+                <p>Age: 20</p>
+                <p>Position: Forward</p>
+            </a>
+        </div>
+        <div class="player-thumbnail" data-name="John Doe" data-age="22" data-position="Midfielder">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+                <h3>SAMPLE 1</h3>
+                <p>Age: 22</p>
+                <p>Position: Midfielder</p>
+            </a>
+        </div>
+        <!-- Add more player circular frames -->
+        <div class="player-thumbnail" data-name="Jane Smith" data-age="18" data-position="Goalkeeper">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+                <h3>SAMPLE 2</h3>
+                <p>Age: 18</p>
+                <p>Position: Goalkeeper</p>
+            </a>
+        </div>
+<div class="player-thumbnail" data-name="Chris Anderson" data-age="24" data-position="Striker">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 3</h3>
+        <p>Age: 24</p>
+        <p>Position: Striker</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Olivia Martinez" data-age="22" data-position="Midfielder">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 4</h3>
+        <p>Age: 22</p>
+        <p>Position: Midfielder</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="James Lee" data-age="20" data-position="Defender">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 5</h3>
+        <p>Age: 20</p>
+        <p>Position: Defender</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Sophia Harris" data-age="19" data-position="Goalkeeper">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 6</h3>
+        <p>Age: 19</p>
+        <p>Position: Goalkeeper</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Daniel Miller" data-age="21" data-position="Midfielder">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 6</h3>
+        <p>Age: 21</p>
+        <p>Position: Midfielder</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Ava Wilson" data-age="18" data-position="Winger">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 7</h3>
+        <p>Age: 18</p>
+        <p>Position: Winger</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Liam Clark" data-age="25" data-position="Striker">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 8</h3>
+        <p>Age: 25</p>
+        <p>Position: Striker</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Mia Lopez" data-age="23" data-position="Defender">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 9</h3>
+        <p>Age: 23</p>
+        <p>Position: Defender</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Ethan Wright" data-age="22" data-position="Goalkeeper">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>SAMPLE 10</h3>
+        <p>Age: 22</p>
+        <p>Position: Goalkeeper</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Isabella Walker" data-age="20" data-position="Winger">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Isabella Walker</h3>
+        <p>Age: 20</p>
+        <p>Position: Winger</p>
+    </a>
+</div>
+<div class="player-thumbnail" data-name="Chris Anderson" data-age="24" data-position="Striker">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Chris Anderson</h3>
+        <p>Age: 24</p>
+        <p>Position: Striker</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Olivia Martinez" data-age="22" data-position="Midfielder">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Olivia Martinez</h3>
+        <p>Age: 22</p>
+        <p>Position: Midfielder</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="James Lee" data-age="20" data-position="Defender">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>James Lee</h3>
+        <p>Age: 20</p>
+        <p>Position: Defender</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Sophia Harris" data-age="19" data-position="Goalkeeper">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Sophia Harris</h3>
+        <p>Age: 19</p>
+        <p>Position: Goalkeeper</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Daniel Miller" data-age="21" data-position="Midfielder">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Daniel Miller</h3>
+        <p>Age: 21</p>
+        <p>Position: Midfielder</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Ava Wilson" data-age="18" data-position="Winger">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Ava Wilson</h3>
+        <p>Age: 18</p>
+        <p>Position: Winger</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Liam Clark" data-age="25" data-position="Striker">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Liam Clark</h3>
+        <p>Age: 25</p>
+        <p>Position: Striker</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Mia Lopez" data-age="23" data-position="Defender">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Mia Lopez</h3>
+        <p>Age: 23</p>
+        <p>Position: Defender</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Ethan Wright" data-age="22" data-position="Goalkeeper">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Ethan Wright</h3>
+        <p>Age: 22</p>
+        <p>Position: Goalkeeper</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Isabella Walker" data-age="20" data-position="Winger">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Isabella Walker</h3>
+        <p>Age: 20</p>
+        <p>Position: Winger</p>
+    </a>
+</div>
+<div class="player-thumbnail" data-name="Emily Davis" data-age="21" data-position="Striker">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Emily Davis</h3>
+        <p>Age: 21</p>
+        <p>Position: Striker</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Michael Johnson" data-age="23" data-position="Defender">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Michael Johnson</h3>
+        <p>Age: 23</p>
+        <p>Position: Defender</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Sarah Williams" data-age="19" data-position="Midfielder">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Sarah Williams</h3>
+        <p>Age: 19</p>
+        <p>Position: Midfielder</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="David Brown" data-age="22" data-position="Goalkeeper">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>David Brown</h3>
+        <p>Age: 22</p>
+        <p>Position: Goalkeeper</p>
+    </a>
+</div>
+
+<div class="player-thumbnail" data-name="Jessica Taylor" data-age="20" data-position="Winger">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+        <h3>Jessica Taylor</h3>
+        <p>Age: 20</p>
+        <p>Position: Winger</p>
+    </a>
+</div>
+
+        <div class="player-thumbnail" data-name="Mark Johnson" data-age="25" data-position="Defender">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+                <h3>Mark Johnson</h3>
+                <p>Age: 25</p>
+                <p>Position: Defender</p>
+            </a>
+        </div>
+        <div class="player-thumbnail" data-name="Emily Davis" data-age="21" data-position="Striker">
+            <a href="playerhub_john.html">
+                <img src="pixx.png" alt="John Doe">
+                <h3>Emily Davis</h3>
+                <p>Age: 21</p>
+                <p>Position: Striker</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h3>Visible to the following clubs, organizations, and other interested parties:</h3>
+        <div class="clubs">
+            <img src="logo/manu.png" alt="Manchester United">
+            <img src="logo/mancity.png" alt="Manchester City">
+            <img src="logo/arsenal.png" alt="Arsenal">
+            <img src="logo/crystal.png" alt="Crystal Palace">
+            <img src="logo/turkey.png" alt="Turkey League">
+            <img src="logo/usa.png" alt="USA League">
+            <img src="logo/spain.png" alt="Spain League">
+            <img src="logo/nigerian.png" alt="Nigeria Football Federation">
+            <img src="logo/sepa.png" alt="Suleja FA">
+            <img src="logo/abuja.png" alt="Abuja FA">
+        </div>
+    </div>
+
+    <script>
+        function searchPlayers() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const players = document.getElementsByClassName('player-thumbnail');
+
+            Array.from(players).forEach(function(player) {
+                const name = player.getAttribute('data-name').toLowerCase();
+                const age = player.getAttribute('data-age').toLowerCase();
+                const position = player.getAttribute('data-position').toLowerCase();
+
+                if (name.includes(input) || age.includes(input) || position.includes(input)) {
+                    player.style.display = "";
+                } else {
+                    player.style.display = "none";
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                let slides = document.querySelectorAll(".slide");
+                slides.forEach(slide => {
+                    slide.style.display = "none";
+                    slide.querySelector('.text').style.display = "none";
+                });
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1;
+                }
+                slides[slideIndex - 1].style.display = "block";
+                slides[slideIndex - 1].querySelector('.text').style.display = "block";
+                setTimeout(() => {
+                    slides[slideIndex - 1].style.display = "none";
+                    showSlides();
+                }, 7000); // Change image every 7 seconds (including fade in/out and fly in/out time)
+            }
+        });
+    </script>
+</body>
+</html>

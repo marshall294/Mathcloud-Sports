@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Football Player Profile</title>
+    <style>
+        /* Basic CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive header with player name and nav */
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .header-content p {
+            font-size: 1.2em;
+            color: #777;
+        }
+
+        /* Responsive navigation */
+        nav {
+            margin-top: 15px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav ul li {
+            font-size: 1.2em;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8em;
+            }
+
+            .header-content p {
+                font-size: 1em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+            }
+        }
+
+        .profile-info, .statistics {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .profile-info h2, .statistics h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .profile-info p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .profile-pic-slider {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            line-height: 40px;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .statistics-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .statistics-table th, .statistics-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .statistics-table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1>BILAL YAHAYAH</h1>
+                <p>Midfield - Riders FC</p>
+
+                <!-- Navigation -->
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="player-video.html">Videos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Profile Picture Slider -->
+        <div class="profile-pic-slider">
+            <div class="slides">
+                <img src="bilal.jpeg" alt="Player Picture 1">
+                <img src="bilal2.png" alt="Player Picture 2">
+                <img src="bilal.jpeg" alt="Player Picture 3">
+            </div>
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <!-- Player Information -->
+        <div class="profile-info">
+            <h2>Personal Information</h2>
+            <p><strong>Club:</strong> Riders FC</p>
+            <p><strong>Country:</strong> Nigeria</p>
+            <p><strong>Date of Birth:</strong> 01/02/2009</p>
+            <p><strong>Weight:</strong> 59kg</p>
+            <p><strong>Height:</strong> 1.50m</p>
+            <p><strong>Preferred Foot:</strong> Right</p>
+        </div>
+
+        <!-- Player Statistics -->
+        <div class="statistics">
+            <h2>Statistics</h2>
+            <table class="statistics-table">
+                <thead>
+                    <tr>
+                        <th>Stat</th>
+                        <th>Value</th>
+                        <th>Under Pressure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Appearances</td>
+                        <td>21</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Goals</td>
+                        <td>8</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Goal Assists</td>
+                        <td>10</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Ball Across</td>
+                        <td>70%</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>Passing Accuracy</td>
+                        <td>80%</td>
+                        <td>70%</td>
+                    </tr>
+                    <tr>
+                        <td>Tackling Ability</td>
+                        <td>60%</</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>Free Kick Technique</td>
+                        <td>35%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td>70%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Dribble Ability</td>
+                        <td>75%</td>
+                        <td>65%</td>
+                    </tr>
+                    <tr>
+                        <td>Sprint into Penalty Box</td>
+                        <td>70%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Stamina</td>
+                        <td>65%</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Decision Making</td>
+                        <td>70%</</td>
+                        <td>60%</td>
+                    </tr>
+                    <tr>
+                        <td>Pressing</td>
+                        <td>65%</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 MathCloud-Sport Hub. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slides img");
+
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            } else if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            showSlide(slideIndex);
+        }
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? "block" : "none";
+            });
+        }
+
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>
