@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Information Submission</title>
     <style>
+    <style>
         /* Basic CSS Reset */
         * {
             margin: 0;
@@ -26,6 +27,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in;
         }
 
         h1 {
@@ -33,6 +35,8 @@
             margin-bottom: 20px;
             font-size: 2.5em;
             color: #007BFF;
+            font-family: 'Verdana', sans-serif;
+            animation: slideIn 1s ease-in-out;
         }
 
         p {
@@ -88,6 +92,7 @@
             background-color: #e9f7ff;
             border-left: 5px solid #007BFF;
             border-radius: 5px;
+            animation: bounceIn 1s ease-out;
         }
 
         footer {
@@ -95,6 +100,17 @@
             margin-top: 30px;
             font-size: 1em;
             color: #777;
+        }
+
+        .terms-checkbox {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terms-checkbox input {
+            margin-right: 10px;
         }
 
         @media (max-width: 768px) {
@@ -122,6 +138,38 @@
 
             input, textarea, select, button {
                 font-size: 0.9em;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
     </style>
@@ -190,15 +238,22 @@
             <label for="additional-info">Additional Information:</label>
             <textarea id="additional-info" name="additional-info" placeholder="Include any additional information (e.g., achievements, statistics, etc.)" required></textarea>
 
+            <!-- Terms and Conditions Checkbox -->
+            <label>
+                <input type="checkbox" id="terms" name="terms" required>
+                I have read and agree to the <a href="terms.html" target="_blank">Terms and Conditions</a>.
+            </label>
+
             <!-- Submit Button -->
             <button type="submit">Submit Information</button>
         </form>
 
-        <!-- Additional Information Section -->
+        <!-- Important Information Section -->
         <div class="additional-info">
             <p><strong>Important Information:</strong></p>
-            <p>After submitting your information and completing the registration fee payment, MathCloud-Sport Hub agents will evaluate your performance over 10 consecutive appearances. These evaluations will form the basis of your detailed statistical profile, focusing on the most marketable and exceptional skills. The observable criteria will adhere to FIFA standards, and your profile picture will only appear on our platform if your skills meet our standards. Please note that the registration fee varies based on the distance of the player's training facilities, and there are no refunds after payment. Players are strongly advised to review this information thoroughly. For further inquiries, please contact MathCloud-Sport Hub at <a href="mailto:info@mathcloud-tech.online">info@mathcloud-tech.online</a>.</p>
-
+            <p>After submitting your information and completing the registration fee payment, MathCloud-Sport Hub agents will evaluate your performance over 10 consecutive appearances. These evaluations will form the basis of your detailed statistical profile, focusing on the most marketable and exceptional skills. The observable criteria will adhere to FIFA standards, and your profile picture will only appear on our platform if your skills meet our standards.</p>
+            <p>Please note that the registration fee varies based on the distance of the player's training facilities, and there are no refunds after payment. Players are strongly advised to review this information thoroughly.</p>
+            <p>If your application is approved, you will be contacted with an invoice and verification of your submitted details. For further inquiries, please contact MathCloud-Sport Hub at <a href="mailto:info@mathcloud-tech.online">info@mathcloud-tech.online</a>.</p>
         </div>
 
         <footer>
@@ -218,8 +273,8 @@
             const foot = document.getElementById('foot').value;
             const additionalInfo = document.getElementById('additional-info').value;
 
-            const emailBody = `
-                Dear MathCloud-Sport Admin,
+            const emailBody = 
+                `Dear MathCloud-Sport Admin,
 
                 A new player has submitted their information. Below are the details:
 
@@ -239,7 +294,7 @@
 
                 Best Regards,
                 MathCloud-Sport System
-            `;
+                `;
 
             document.querySelector('form').action = `mailto:admin@mathcloud-tech.online?subject=Player Submission - ${name}&body=${encodeURIComponent(emailBody)}`;
         }
